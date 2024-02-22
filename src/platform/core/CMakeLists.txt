@@ -7,7 +7,7 @@ if(BUILD_SDL_SOURCE)
   include(FetchContent)
   FetchContent_Declare(SDL2
     GIT_REPOSITORY https://github.com/libsdl-org/SDL
-    GIT_TAG        97405e74e952f51b16c315ed5715b6b9de5a8a50 # v2.0.5 for testing
+    GIT_TAG        origin/SDL2
   )
 
   FetchContent_MakeAvailable(SDL2)
