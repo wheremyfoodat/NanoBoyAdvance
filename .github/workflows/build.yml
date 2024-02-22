@@ -101,7 +101,7 @@ jobs:
           if-no-files-found: error
 
   build-macOS-arm:
-    runs-on: macos-latest-large
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - name: Setup dependencies
@@ -117,7 +117,8 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_PREFIX_PATH="$(brew --prefix qt@5);$(brew --prefix glew)" \
             -DMACOS_BUILD_APP_BUNDLE=ON \
-            -DMACOS_BUNDLE_QT=ON
+            -DMACOS_BUNDLE_QT=ON \
+            -DCMAKE_OSX_ARCHITECTURES="arm64"
           cd build
           make -j$(getconf _NPROCESSORS_ONLN)
       - name: Create disk image
