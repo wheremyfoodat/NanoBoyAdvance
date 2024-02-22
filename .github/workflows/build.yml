@@ -107,7 +107,7 @@ jobs:
       - name: Setup dependencies
         env:
           HOMEBREW_NO_ANALYTICS: 1
-        run: brew install sdl2 glew qt
+        run: brew install sdl2 glew && chmod +x .github/install-qt.sh && ./github/install-qt.sh --version 6.2.0 qtbase
       - name: Build NanoBoyAdvance
         run: |
           cmake -Bbuild \
