@@ -119,6 +119,7 @@ jobs:
             -DMACOS_BUILD_APP_BUNDLE=ON \
             -DMACOS_BUNDLE_QT=ON \
             -DCMAKE_OSX_ARCHITECTURES="arm64"
+            -DBUILD_SDL_SOURCE=ON
           cd build
           make -j$(getconf _NPROCESSORS_ONLN)
       - name: Create disk image

@@ -1,8 +1,17 @@
 option(USE_STATIC_SDL "Link against static version of SDL library." OFF)
+option(BUILD_SDL_SOURCE "Build the SDL library from source" OFF)
 option(USE_SYSTEM_TOML11 "Use system-provided toml11 library." OFF)
 option(USE_SYSTEM_UNARR "Use system-provided unarr library." OFF)
 
-if(USE_STATIC_SDL)
+if(BUILD_SDL_SOURCE)
+  include(FetchContent)
+  FetchContent_Declare(SDL2
+    GIT_REPOSITORY https://github.com/libsdl-org/SDL
+    GIT_TAG        97405e74e952f51b16c315ed5715b6b9de5a8a50 # v2.0.5 for testing
+  )
+
+  FetchContent_MakeAvailable(SDL2)
+elseif(USE_STATIC_SDL)
   find_package(SDL2 2.0.10
     REQUIRED COMPONENTS SDL2-static
     OPTIONAL_COMPONENTS SDL2main
